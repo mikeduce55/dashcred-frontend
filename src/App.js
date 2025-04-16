@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Sidebar from './Sidebar';
+import Convert from './Convert';
+import Store from './Store';
 
 function App() {
+  const [view, setView] = useState('convert');
+
   return (
-    <div className="App">
-      <h1>DashCred is live</h1>
-      <p>Convert / Store / Trade UI will appear here</p>
+    <div style={{ display: 'flex' }}>
+      <Sidebar setView={setView} />
+      <div style={{ padding: '2rem', flexGrow: 1 }}>
+        {view === 'convert' && <Convert />}
+        {view === 'store' && <Store />}
+      </div>
     </div>
   );
 }
